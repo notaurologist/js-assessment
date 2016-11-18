@@ -6,19 +6,23 @@ exports.arraysAnswers = {
   },
 
   sum: function(arr) {
-    return arr.reduce(function (sum, curr) {
-      return sum + curr;
-    }, 0);
+    var sum = 0;
+    for (var i = 0; i < arr.length; i++) {
+      sum += arr[i];
+    }
+
+    return sum;
   },
 
   remove: function(arr, item) {
-    return arr.reduce(function (newArray, curr) {
-      if (curr !== item) {
-        newArray.push(curr);
+    var newArray = [];
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] !== item) {
+        newArray.push(arr[i]);
       }
+    }
 
-      return newArray;
-    }, []);
+    return newArray;
   },
 
   removeWithoutCopy: function(arr, item) {
@@ -61,40 +65,48 @@ exports.arraysAnswers = {
   },
 
   count: function(arr, item) {
-    return arr.reduce(function (sum, curr) {
-      if (curr === item) {
-        return sum + 1;
+    var sum = 0;
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] === item) {
+        sum += 1;
       }
+    }
 
-      return sum;
-    }, 0);
+    return sum;
   },
 
   duplicates: function(arr) {
-    return arr.sort().reduce(function (dupes, curr, idx) {
+    var dupes = [];
+    var sortedArr = arr.sort();
+    for (var i = 0; i < sortedArr.length; i++) {
+      var curr = sortedArr[i];
       // If the current item is the same as the last
       // and it's not already in the dupes array, add it.
-      if (curr === arr[idx - 1] && dupes.indexOf(curr) === -1) {
+      if (curr === arr[i - 1] && dupes.indexOf(curr) === -1) {
         dupes.push(curr);
       }
+    }
 
-      return dupes;
-    }, []);
+    return dupes;
   },
 
   square: function(arr) {
-    return arr.map(function (item) {
-      return item * item;
-    });
+    var squares = [];
+    for (var i = 0; i < arr.length; i++) {
+      squares.push(arr[i] * arr[i]);
+    }
+
+    return squares;
   },
 
   findAllOccurrences: function(arr, target) {
-    return arr.reduce(function (indices, curr, idx) {
-      if (curr === target) {
-        indices.push(idx);
+    var indices = [];
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] === target) {
+        indices.push(i);
       }
+    }
 
-      return indices;
-    }, []);
+    return indices;
   }
 };
