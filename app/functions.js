@@ -54,7 +54,13 @@ exports.functionsAnswers = {
   },
 
   partialUsingArguments: function(fn) {
-
+    // Get any args passed besides the function
+    var args = Array.prototype.slice.call(arguments, 1, arguments.length);
+    return function() {
+      // Can't directly concat arguments. End up with a nested array.
+      var args2 = Array.prototype.slice.call(arguments);
+      return fn.apply(null, args.concat(args2));
+    };
   },
 
   curryIt: function(fn) {
