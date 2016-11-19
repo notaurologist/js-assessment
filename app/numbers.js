@@ -6,7 +6,8 @@ exports.numbersAnswers = {
   },
 
   base10: function(str) {
-
+    // SPECIFICALLY converting binary number string to base10
+    return parseInt(str, 2);
   },
 
   convertToBinary: function(num) {

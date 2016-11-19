@@ -6,10 +6,17 @@ exports.objectsAnswers = {
   },
 
   alterObjects: function(constructor, greeting) {
-
+    constructor.prototype.greeting = greeting;
   },
 
   iterate: function(obj) {
+    var ownProps = [];
+    for (var key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        ownProps.push(key + ': ' + obj[key]);
+      }
+    }
 
+    return ownProps;
   }
 };
