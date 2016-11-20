@@ -47,6 +47,7 @@ exports.functionsAnswers = {
   },
 
   callIt: function(fn) {
+    // TODO: Review
     // arguments isn't really an array, so we need to create
     // an array based off a slice of the arguments just dropping the first arg.
     var args = Array.prototype.slice.call(arguments, 1, arguments.length);
@@ -57,6 +58,7 @@ exports.functionsAnswers = {
     // Get any args passed besides the function
     var args = Array.prototype.slice.call(arguments, 1, arguments.length);
     return function() {
+      // TODO: Review
       // Can't directly concat arguments. End up with a nested array.
       var args2 = Array.prototype.slice.call(arguments);
       return fn.apply(null, args.concat(args2));
@@ -64,6 +66,6 @@ exports.functionsAnswers = {
   },
 
   curryIt: function(fn) {
-
+    // TODO: Review
   }
 };

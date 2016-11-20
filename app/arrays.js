@@ -27,6 +27,7 @@ exports.arraysAnswers = {
 
   removeWithoutCopy: function(arr, item) {
     while (arr.indexOf(item) >= 0) {
+      // TODO: Review
       // splice sig: (index, number of items to delete, new items)
       arr.splice(arr.indexOf(item), 1);
     }
@@ -55,6 +56,7 @@ exports.arraysAnswers = {
   },
 
   concat: function(arr1, arr2) {
+    // TODO: Review
     // concat creates a new array
     return arr1.concat(arr2);
   },
