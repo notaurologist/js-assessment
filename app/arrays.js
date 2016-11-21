@@ -6,28 +6,23 @@ exports.arraysAnswers = {
   },
 
   sum: function(arr) {
-    var sum = 0;
-    for (var i = 0; i < arr.length; i++) {
-      sum += arr[i];
-    }
-
-    return sum;
+    return _.reduce(arr, function (sum, i) {
+      return sum + i;
+    }, 0);
   },
 
   remove: function(arr, item) {
-    var newArray = [];
-    for (var i = 0; i < arr.length; i++) {
-      if (arr[i] !== item) {
-        newArray.push(arr[i]);
+    return _.reduce(arr, function (newArray, i) {
+      if (i !== item) {
+        newArray.push(i);
       }
-    }
 
-    return newArray;
+      return newArray;
+    }, []);
   },
 
   removeWithoutCopy: function(arr, item) {
     while (arr.indexOf(item) >= 0) {
-      // TODO: Review
       // splice sig: (index, number of items to delete, new items)
       arr.splice(arr.indexOf(item), 1);
     }
@@ -56,7 +51,6 @@ exports.arraysAnswers = {
   },
 
   concat: function(arr1, arr2) {
-    // TODO: Review
     // concat creates a new array
     return arr1.concat(arr2);
   },
@@ -67,48 +61,43 @@ exports.arraysAnswers = {
   },
 
   count: function(arr, item) {
-    var sum = 0;
-    for (var i = 0; i < arr.length; i++) {
-      if (arr[i] === item) {
-        sum += 1;
+    return _.reduce(arr, function(sum, i) {
+      if (i === item) {
+        sum = sum + 1;
       }
-    }
 
-    return sum;
+      return sum;
+    }, 0);
   },
 
   duplicates: function(arr) {
-    var dupes = [];
     var sortedArr = arr.sort();
-    for (var i = 0; i < sortedArr.length; i++) {
-      var curr = sortedArr[i];
+
+    return _.reduce(sortedArr, function(dupes, item, index) {
       // If the current item is the same as the last
       // and it's not already in the dupes array, add it.
-      if (curr === arr[i - 1] && dupes.indexOf(curr) === -1) {
-        dupes.push(curr);
+      if (item === sortedArr[index - 1] && dupes.indexOf(item) === -1) {
+        dupes.push(item);
       }
-    }
 
-    return dupes;
+      return dupes;
+    }, []);
   },
 
   square: function(arr) {
-    var squares = [];
-    for (var i = 0; i < arr.length; i++) {
-      squares.push(arr[i] * arr[i]);
-    }
-
-    return squares;
+    return _.reduce(arr, function(squares, i) {
+      squares.push(i * i);
+      return squares;
+    }, []);
   },
 
   findAllOccurrences: function(arr, target) {
-    var indices = [];
-    for (var i = 0; i < arr.length; i++) {
-      if (arr[i] === target) {
-        indices.push(i);
+    return _.reduce(arr, function(indices, item, index) {
+      if (item === target) {
+        indices.push(index);
       }
-    }
 
-    return indices;
+      return indices;
+    }, []);
   }
 };
