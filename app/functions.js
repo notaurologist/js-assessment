@@ -16,19 +16,16 @@ exports.functionsAnswers = {
   },
 
   makeClosures: function(arr, fn) {
-    var newArray = [];
-
     var innerFunc = function (arg) {
       return function () {
         return fn(arg);
       };
     };
 
-    for (var i = 0; i < arr.length; i++) {
-      newArray.push(innerFunc(arr[i]));
-    }
-
-    return newArray;
+    return _.reduce(arr, function(newArray, i) {
+      newArray.push(innerFunc(i));
+      return newArray;
+    }, []);
   },
 
   partial: function(fn, str1, str2) {
