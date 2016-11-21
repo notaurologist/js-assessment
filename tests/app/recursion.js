@@ -47,6 +47,11 @@ describe('recursion', function() {
     expect(result.length).to.eql(5);
     expect(result.indexOf('main.js') > -1).to.be.ok;
     expect(result.indexOf('underscore.js') > -1).to.be.ok;
+
+    result = recursionAnswers.listFiles(fileData, 'vendor');
+    expect(result.length).to.eql(2);
+    expect(result.indexOf('jquery.js') > -1).to.be.ok;
+    expect(result.indexOf('underscore.js') > -1).to.be.ok;
   });
 });
 
