@@ -2,7 +2,6 @@ exports = typeof window === 'undefined' ? global : window;
 
 exports.asyncAnswers = {
   async: function(value) {
-    // TODO: Review
     // Using native promises because support is there
     // for modern browsers, and jQuery deferreds are NOT promises.
     return new Promise(function (resolve, reject) {
